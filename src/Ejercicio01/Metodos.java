@@ -34,6 +34,18 @@ public class Metodos {
 	private static ObjectInputStream ois = null;
 	private static FileInputStream fis = null;
 
+	/**
+	 * Crea un elemento del xml
+	 * 
+	 * @param elemento
+	 *            el nomre del elemento
+	 * @param valor
+	 *            el contenido del elemento
+	 * @param nodo
+	 *            el padre del elemento
+	 * @param document
+	 *            el xml que estamos modificando
+	 */
 	private static void crearElemento(String elemento, String valor, Element nodo, Document document) {
 		Element element = document.createElement(elemento);
 		Text text = document.createTextNode(valor);
@@ -43,10 +55,10 @@ public class Metodos {
 	}
 
 	/**
-	 * El metodo menú se usa para gestionar las distintas acciones que puede hacer
-	 * el programa en funcion del numero entero que introduzca el usuario se llamara
-	 * al método indicadp 1.-Guardar contacto 2.-mostrar contactos 3.-Guardar xml de
-	 * contactos 4.-Salir
+	 * El metodo menú se usa para gestionar las distintas acciones que puede
+	 * hacer el programa en funcion del numero entero que introduzca el usuario
+	 * se llamara al método indicadp 1.-Guardar contacto 2.-mostrar contactos
+	 * 3.-Guardar xml de contactos 4.-Salir
 	 */
 	public static void menu() {
 		int opcion = 0;
@@ -82,8 +94,8 @@ public class Metodos {
 
 	/**
 	 * Este metodo pide al usuario los datos de un nuevo contacto y escribe ese
-	 * contacto en el fichero al finalizar pregunta al usuario si desea introducir
-	 * otro contacto y si dice que sí el metodo se llama a si mismo
+	 * contacto en el fichero al finalizar pregunta al usuario si desea
+	 * introducir otro contacto y si dice que sí el metodo se llama a si mismo
 	 */
 	private static void guardarContacto() {
 		Contacto contactoAux = new Contacto(pideString("nombre"), pideString("Apellidos"), pideString("e-mail"),
@@ -130,8 +142,8 @@ public class Metodos {
 	}
 
 	/**
-	 * Este metodo lee el fichero de contactos y va mostrando los contactos que hay
-	 * en el
+	 * Este metodo lee el fichero de contactos y va mostrando los contactos que
+	 * hay en el
 	 */
 	private static void mostrarContactos() {
 		if (!fichero.exists() || fichero == null) {
@@ -179,8 +191,8 @@ public class Metodos {
 
 	/**
 	 * El metodo pide al usuario un String por teclado y lo devuelve En caso de
-	 * producirse una excepcion lo vuelve a pedir Recibe un String como parametro
-	 * que se usa para indicarle al usuario que dato debe introducir
+	 * producirse una excepcion lo vuelve a pedir Recibe un String como
+	 * parametro que se usa para indicarle al usuario que dato debe introducir
 	 * 
 	 * @param tipo
 	 *            de dato que queremos
@@ -206,8 +218,8 @@ public class Metodos {
 
 	/**
 	 * El metodo pide al usuario un int por teclado y lo devuelve En caso de
-	 * producirse una excepcion lo vuelve a pedir Recibe un String como parametro
-	 * que se usa para indicarle al usuario que dato debe introducir
+	 * producirse una excepcion lo vuelve a pedir Recibe un String como
+	 * parametro que se usa para indicarle al usuario que dato debe introducir
 	 * 
 	 * @param tipo
 	 *            de dato que queremos
@@ -236,6 +248,7 @@ public class Metodos {
 	 * contacto
 	 * 
 	 * @param contactos
+	 *            lista de contactos que queremos guardar en el xml
 	 */
 	public static void escribeXML(ArrayList<Contacto> contactos) {
 
@@ -275,7 +288,8 @@ public class Metodos {
 	}
 
 	/**
-	 * Este metodo lee el fichero de contactos y los devuelve a modo de ArrayList
+	 * Este metodo lee el fichero de contactos y los devuelve a modo de
+	 * ArrayList
 	 */
 	public static ArrayList<Contacto> leerContactos() {
 		fichero = new File("src//Ejercicio01//contactos.obj");

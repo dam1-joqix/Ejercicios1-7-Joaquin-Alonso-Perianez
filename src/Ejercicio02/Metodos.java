@@ -11,8 +11,10 @@ import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import Utilidades.MetodosGenericos;
+
 /**
  * la clase contiene metodos para la funcionalidad del programa
+ * 
  * @author Joaquin Alonso Perianez
  *
  */
@@ -22,12 +24,10 @@ public class Metodos {
 	private static FileOutputStream fos = null;
 	private static ObjectInputStream ois = null;
 	private static FileInputStream fis = null;
+
 	/**
-	 * menu con varias opciones
-	 * 1.-Guardar libros
-	 * 2.-Mostrar libros
-	 * 3.-Escribir xml
-	 * 4.-Salir
+	 * menu con varias opciones 1.-Guardar libros 2.-Mostrar libros 3.-Escribir
+	 * xml 4.-Salir
 	 */
 	public static void menu() {
 		ficheroObjetos = new File("libros.obj");
@@ -57,6 +57,12 @@ public class Metodos {
 		} while (opcion != 4);
 	}
 
+	/**
+	 * Este metodo recibe una lista de libros y los escribe en un xml con todos
+	 * sus datos
+	 * 
+	 * @param listaLibros
+	 */
 	private static void escribeXML(ArrayList<Utilidades.Libro> listaLibros) {
 
 		try {
@@ -93,6 +99,12 @@ public class Metodos {
 		}
 	}
 
+	/**
+	 * Este metodo muestra los libros que hay en una lista que recibe como
+	 * parametro
+	 * 
+	 * @param listaLibros
+	 */
 	private static void mostrarLibros(ArrayList<Utilidades.Libro> listaLibros) {
 		for (int i = 0; i < listaLibros.size(); i++) {
 			System.out.println(listaLibros.get(i));
@@ -100,6 +112,10 @@ public class Metodos {
 
 	}
 
+	/**
+	 * Este metodo crea un libro a partir de datos introducidos por teclado y lo
+	 * guarda en el fichero de objetos
+	 */
 	private static void guardarLibros() {
 		Utilidades.Libro libroAux = new Utilidades.Libro(MetodosGenericos.pideString("ISBN"),
 				MetodosGenericos.pideString("título"), MetodosGenericos.pideString("autor"),
@@ -145,6 +161,12 @@ public class Metodos {
 
 	}
 
+	/**
+	 * Este metodo lee un fichero de objetos libro y devuelve lo que hay en el
+	 * como una lista de libros
+	 * 
+	 * @return listaLibros
+	 */
 	private static ArrayList<Utilidades.Libro> obtenerListaLibros() {
 		ArrayList<Utilidades.Libro> libros = null;
 		if (!ficheroObjetos.exists() || ficheroObjetos == null) {

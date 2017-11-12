@@ -1,8 +1,10 @@
-package Ejercicio03;
+package Ejercicio04;
+
+
 
 /**
  * Este programa muestra por pantalla los datos contenidos en un xml de
- * contactos
+ * libros
  * 
  * @author Joaquin Alonso Perianez
  *
@@ -16,3 +18,4 @@ public class Principal {
 		Metodos.leerXML();
 	}
 }
+

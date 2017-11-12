@@ -15,7 +15,7 @@ public class MiObjectOutputStream extends ObjectOutputStream {
 
 	public MiObjectOutputStream(OutputStream out) throws IOException {
 		super(out);
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public MiObjectOutputStream() throws SecurityException, IOException {
