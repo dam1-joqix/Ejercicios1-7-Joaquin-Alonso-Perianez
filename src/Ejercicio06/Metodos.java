@@ -1,22 +1,28 @@
 package Ejercicio06;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
+import java.io.*;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 import Utilidades.MetodosGenericos;
 
+/**
+ * Laq clase metodos guarda los metodos necesarios para dar funcionalidad al
+ * programa
+ * 
+ * @author Joaquin Alonso Perianez
+ *
+ */
 public class Metodos {
-
+	/**
+	 * Este metodo escribe un xml de libros pidiendo cada dato al usuario por teclado
+	 */
 	public static void escribeXML() {
 		FileOutputStream fos = null;
 		XMLOutputFactory factory = null;
 		XMLStreamWriter xmlStreamWriter = null;
-		
-		int i =0;
+
+		int i = 0;
 		try {
 			fos = new FileOutputStream("src\\Ejercicio06\\libros.xml");
 			factory = XMLOutputFactory.newInstance();
@@ -26,7 +32,7 @@ public class Metodos {
 			xmlStreamWriter.writeStartElement("libros");// abre libros
 			do {
 				i++;
-				System.out.println("vamos con el libro "+i);
+				System.out.println("vamos con el libro " + i);
 				xmlStreamWriter.writeStartElement("libro");// abre libro
 				xmlStreamWriter.writeAttribute("ISBN", MetodosGenericos.pideString("ISBN"));
 				xmlStreamWriter.writeStartElement("titulo");// abre titulo
@@ -51,10 +57,10 @@ public class Metodos {
 			System.out.println("XML creado");
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} catch (XMLStreamException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} finally {
 
@@ -74,7 +80,7 @@ public class Metodos {
 				}
 			}
 		}
-		// TODO
+	
 	}
 
 }

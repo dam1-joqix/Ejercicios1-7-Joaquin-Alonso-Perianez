@@ -8,6 +8,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
+import Utilidades.MetodosGenericos;
+
 /**
  * Esta clase contioene los metodos necesarios para dar funcionalidad al
  * programa
@@ -30,10 +32,10 @@ public class Metodos {
 			for (int i = 0; i < personas.getLength(); i++) {
 				Node contacto = personas.item(i);
 				Element elemento = (Element) contacto;
-				System.out.println("Nombre: " + getNodo("nombre", elemento));
-				System.out.println("Apellidos: " + getNodo("apellidos", elemento));
-				System.out.println("E-Mail: " + getNodo("email", elemento));
-				System.out.println("Teléfono: " + getNodo("telefono", elemento));
+				System.out.println("Nombre: " + MetodosGenericos.getNodo("nombre", elemento));
+				System.out.println("Apellidos: " + MetodosGenericos.getNodo("apellidos", elemento));
+				System.out.println("E-Mail: " + MetodosGenericos.getNodo("email", elemento));
+				System.out.println("Teléfono: " + MetodosGenericos.getNodo("telefono", elemento));
 			}
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
@@ -47,17 +49,5 @@ public class Metodos {
 
 	}
 
-	/**
-	 * Este metodo obtiene un nodo del xml
-	 * 
-	 * @param etiqueta
-	 *            el nombre de la etiqueta del nodo
-	 * @param elem
-	 *            el elemento padre
-	 * @return nodo
-	 */
-	private static String getNodo(String etiqueta, Element elem) {
-		Node nodo = elem.getElementsByTagName(etiqueta).item(0).getFirstChild();
-		return nodo.getTextContent();
-	}
+	
 }

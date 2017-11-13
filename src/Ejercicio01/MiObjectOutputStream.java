@@ -1,8 +1,6 @@
 package Ejercicio01;
 
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 
 /**
  * Esta clase sobreescribe a ObjectOutputStream para que el método

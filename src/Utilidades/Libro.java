@@ -2,6 +2,12 @@ package Utilidades;
 
 import java.io.Serializable;
 
+/**
+ * Esta clase sirve para guardar la informacion de un libro
+ * 
+ * @author Joaquin Alonso Perianez
+ *
+ */
 public class Libro implements Serializable {
 
 	private static final long serialVersionUID = -1993349967265800892L;

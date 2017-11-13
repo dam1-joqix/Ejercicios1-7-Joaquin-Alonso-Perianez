@@ -4,7 +4,7 @@ package Ejercicio01;
 /**
  * El programa escribe y lee un fichero de objetos y permite guardar los objetos de dicho fichero en un xml
  * Para que el usuario elija las operaciones que desea realizar desde el main se llamará a un menú
- * @author Joaquin Alonso Periánez
+ * @author Joaquin Alonso Perianez
  *
  */
 

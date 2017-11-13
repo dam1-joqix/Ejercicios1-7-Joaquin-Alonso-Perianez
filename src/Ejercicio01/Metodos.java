@@ -1,16 +1,14 @@
 package Ejercicio01;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
+
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 import org.w3c.dom.*;
+
+import Utilidades.MetodosGenericos;
+
 import javax.xml.parsers.*;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.*;
@@ -34,25 +32,7 @@ public class Metodos {
 	private static ObjectInputStream ois = null;
 	private static FileInputStream fis = null;
 
-	/**
-	 * Crea un elemento del xml
-	 * 
-	 * @param elemento
-	 *            el nomre del elemento
-	 * @param valor
-	 *            el contenido del elemento
-	 * @param nodo
-	 *            el padre del elemento
-	 * @param document
-	 *            el xml que estamos modificando
-	 */
-	private static void crearElemento(String elemento, String valor, Element nodo, Document document) {
-		Element element = document.createElement(elemento);
-		Text text = document.createTextNode(valor);
-		element.appendChild(text);
-		nodo.appendChild(element);
-
-	}
+	
 
 	/**
 	 * El metodo menú se usa para gestionar las distintas acciones que puede
@@ -69,7 +49,7 @@ public class Metodos {
 			System.out.println("2.- Mostrar contactos");
 			System.out.println("3.-Guardar contactos en XML");
 			System.out.println("4.- Salir");
-			opcion = pideNum("opción");
+			opcion = MetodosGenericos.pideNum("opción");
 			switch (opcion) {
 			case 1:
 				guardarContacto();
@@ -98,8 +78,8 @@ public class Metodos {
 	 * introducir otro contacto y si dice que sí el metodo se llama a si mismo
 	 */
 	private static void guardarContacto() {
-		Contacto contactoAux = new Contacto(pideString("nombre"), pideString("Apellidos"), pideString("e-mail"),
-				pideNum("teléfono"));
+		Contacto contactoAux = new Contacto(MetodosGenericos.pideString("nombre"), MetodosGenericos.pideString("Apellidos"), MetodosGenericos.pideString("e-mail"),
+				MetodosGenericos.pideNum("teléfono"));
 		try {
 
 			if (fichero.exists()) {
@@ -121,7 +101,6 @@ public class Metodos {
 				try {
 					oos.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -129,13 +108,12 @@ public class Metodos {
 				try {
 					fos.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 		}
 		System.out.println("¿Deseas introducir más contactos?");
-		if (pideString("si o no").equalsIgnoreCase("si")) {
+		if (MetodosGenericos.pideString("si o no").equalsIgnoreCase("si")) {
 			guardarContacto();
 		}
 
@@ -159,7 +137,6 @@ public class Metodos {
 				}
 
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
 				System.out.println("Fin de lectura");
@@ -171,7 +148,6 @@ public class Metodos {
 					try {
 						ois.close();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
@@ -179,7 +155,6 @@ public class Metodos {
 					try {
 						fis.close();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
@@ -189,59 +164,7 @@ public class Metodos {
 
 	}
 
-	/**
-	 * El metodo pide al usuario un String por teclado y lo devuelve En caso de
-	 * producirse una excepcion lo vuelve a pedir Recibe un String como
-	 * parametro que se usa para indicarle al usuario que dato debe introducir
-	 * 
-	 * @param tipo
-	 *            de dato que queremos
-	 * @return texto obtenido
-	 */
-	public static String pideString(String tipo) {
-		Scanner scan;
-		String variable1 = "";
-		boolean booleano1 = true;
-		System.out.println("Introduce " + tipo);
-		scan = new Scanner(System.in);
-		do {
-			try {
-				variable1 = scan.nextLine();
-				booleano1 = false;
-
-			} catch (Exception e) {
-				System.out.println("Introduce de nuevo " + tipo);
-			}
-		} while (booleano1);
-		return variable1;
-	}
-
-	/**
-	 * El metodo pide al usuario un int por teclado y lo devuelve En caso de
-	 * producirse una excepcion lo vuelve a pedir Recibe un String como
-	 * parametro que se usa para indicarle al usuario que dato debe introducir
-	 * 
-	 * @param tipo
-	 *            de dato que queremos
-	 * @return texto obtenido
-	 */
-	public static int pideNum(String tipo) {
-		Scanner scan;
-		int variable1 = 0;
-		boolean booleano1 = true;
-		System.out.println("Introduce " + tipo);
-		scan = new Scanner(System.in);
-		do {
-			try {
-				variable1 = scan.nextInt();
-				booleano1 = false;
-
-			} catch (Exception e) {
-				System.out.println("Introduce de nuevo " + tipo);
-			}
-		} while (booleano1);
-		return variable1;
-	}
+	
 
 	/**
 	 * Este metodo escribe un xml a partir de un ArrayList de objetos de tipo
@@ -262,10 +185,10 @@ public class Metodos {
 			for (int i = 0; i < contactos.size(); i++) {
 				Element nodo = document.createElement("contacto");
 				document.getDocumentElement().appendChild(nodo);
-				crearElemento("nombre", contactos.get(i).getNombre(), nodo, document);
-				crearElemento("apellidos", contactos.get(i).getApellidos(), nodo, document);
-				crearElemento("email", contactos.get(i).getEmail(), nodo, document);
-				crearElemento("telefono", Integer.toString(contactos.get(i).getTelefono()), nodo, document);
+				MetodosGenericos.crearElemento("nombre", contactos.get(i).getNombre(), nodo, document);
+				MetodosGenericos.crearElemento("apellidos", contactos.get(i).getApellidos(), nodo, document);
+				MetodosGenericos.crearElemento("email", contactos.get(i).getEmail(), nodo, document);
+				MetodosGenericos.crearElemento("telefono", Integer.toString(contactos.get(i).getTelefono()), nodo, document);
 			}
 			Source source = new DOMSource(document);
 			Result result = new StreamResult(new File("src//Ejercicio01//contactos.xml"));
